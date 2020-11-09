@@ -96,6 +96,12 @@ cv2.putText(img_re,str(arr_color_eng[3]),(470,680),cv2.FONT_HERSHEY_SIMPLEX, 3, 
 cv2.putText(img_re,str(arr_color_eng[4]),(340,600),cv2.FONT_HERSHEY_SIMPLEX, 3, (255,255,255), 3, cv2.LINE_AA)
 cv2.putText(img_re,str(arr_color_eng[5]),(340,420),cv2.FONT_HERSHEY_SIMPLEX, 3, (255,255,255), 3, cv2.LINE_AA)
 
+cv2.putText(img_re,str(arr_color[0]),(485,460),cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,255), 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color[1]),(555,490),cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,255), 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color[2]),(555,560),cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,255), 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color[3]),(485,600),cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,255), 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color[4]),(415,560),cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,255), 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color[5]),(415,490),cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,255), 3, cv2.LINE_AA)
 
 for num in range(0,6):
     arr_cir[num] = str(arr_cir[num])
