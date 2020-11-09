@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from math import *
 
-img = cv2.imread("img_21.jpg", cv2.IMREAD_COLOR)
+img = cv2.imread("img_22.jpg", cv2.IMREAD_COLOR)
 img_cp=img.copy()
 
 arr_cir=[0,0,0,0,0,0]
@@ -102,18 +102,18 @@ for num in range(0,6):
     arr_updn[num] = str(arr_updn[num])
     arr_color[num] = str(arr_color[num])
     
-cv2.putText(img_re,str(''.join(arr_color)),(780,90),cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 3, cv2.LINE_AA)
-cv2.putText(img_re,str(''.join(arr_updn)),(780,130),cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 3, cv2.LINE_AA)
-cv2.putText(img_re,str(''.join(arr_cir)),(780,160),cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 3, cv2.LINE_AA)
+cv2.putText(img_re,str('Reslult_R1 ' + ''.join(arr_cir)),(660,100),cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
+cv2.putText(img_re,str('Reslult_R2 ' + ''.join(arr_updn)),(660,130),cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
+cv2.putText(img_re,str('Reslult_R3 ' + ''.join(arr_color)),(660,160),cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
 
 
 
-cv2.imshow('img1', img)
+# cv2.imshow('img1', img)
 cv2.imshow('img2', img_re)
-cv2.imshow('img3', img_gray)
-cv2.imshow('img4', img_gray_cir)
-cv2.imshow('img5', img_edge)
-cv2.imshow('img6', img_edge_cir)
+# cv2.imshow('img3', img_gray)
+# cv2.imshow('img4', img_gray_cir)
+# cv2.imshow('img5', img_edge)
+# cv2.imshow('img6', img_edge_cir)
 # cv2.imshow('imgb', img_B)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
