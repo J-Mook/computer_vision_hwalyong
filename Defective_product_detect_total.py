@@ -11,6 +11,9 @@ arr_color = [0,0,0,0,0,0]
 arr_color_eng = [0,0,0,0,0,0]
 arr_updn = [0,0,0,0,0,0]
 
+arr_updn_disp = [' ',' ',' ',' ',' ',' ']
+arr_cir_disp = [' ',' ',' ',' ',' ',' ']
+
 colorset=[[0,160,50],[0,120,220],[150,30,150],[225,0,0],[255,100,0],[255,200,0]] #색 순서(g,b,p,r,o,y)
 colornum2eng = ['g','b','p','r','o','y']
 
@@ -79,30 +82,22 @@ for num in range(0,6):
     if arr_def[num] == arr_cir[num]:
             arr_updn[num] = 1
             
-circles = cv2.HoughCircles(img_edge_cir, cv2.HOUGH_GRADIENT, 1, 200, param1 = 180, param2 = 50, minRadius = 80, maxRadius = 108)
-circles = np.uint16(np.around(circles))
-for i in circles[0,:]:
-    cv2.circle(img_re, (i[0], i[1]), i[2], (255, 255, 255), 5)
+# circles = cv2.HoughCircles(img_edge_cir, cv2.HOUGH_GRADIENT, 1, 200, param1 = 180, param2 = 50, minRadius = 80, maxRadius = 108)
+# circles = np.uint16(np.around(circles))
+# for i in circles[0,:]:
+#     cv2.circle(img_re, (i[0], i[1]), i[2], (255, 255, 255), 5)
             
 # redius = 300
 # for i in range(0,6):
     # cv2.putText(img_re,str(arr_color_eng[i]),(int(460+redius*sin(90-i*60)),int(510+redius*cos(90-i*60))),cv2.FONT_HERSHEY_SIMPLEX, 3, (255,255,255), 3, cv2.LINE_AA)
 
-            
-cv2.putText(img_re,str(arr_color_eng[0]),(470,380),cv2.FONT_HERSHEY_SIMPLEX, 3, (255,255,255), 3, cv2.LINE_AA)
-cv2.putText(img_re,str(arr_color_eng[1]),(610,420),cv2.FONT_HERSHEY_SIMPLEX, 3, (255,255,255), 3, cv2.LINE_AA)
-cv2.putText(img_re,str(arr_color_eng[2]),(610,600),cv2.FONT_HERSHEY_SIMPLEX, 3, (255,255,255), 3, cv2.LINE_AA)
-cv2.putText(img_re,str(arr_color_eng[3]),(470,680),cv2.FONT_HERSHEY_SIMPLEX, 3, (255,255,255), 3, cv2.LINE_AA)
-cv2.putText(img_re,str(arr_color_eng[4]),(340,600),cv2.FONT_HERSHEY_SIMPLEX, 3, (255,255,255), 3, cv2.LINE_AA)
-cv2.putText(img_re,str(arr_color_eng[5]),(340,420),cv2.FONT_HERSHEY_SIMPLEX, 3, (255,255,255), 3, cv2.LINE_AA)
 
-cv2.putText(img_re,str(arr_color[0]),(485,460),cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,255), 3, cv2.LINE_AA)
-cv2.putText(img_re,str(arr_color[1]),(555,490),cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,255), 3, cv2.LINE_AA)
-cv2.putText(img_re,str(arr_color[2]),(555,560),cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,255), 3, cv2.LINE_AA)
-cv2.putText(img_re,str(arr_color[3]),(485,600),cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,255), 3, cv2.LINE_AA)
-cv2.putText(img_re,str(arr_color[4]),(415,560),cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,255), 3, cv2.LINE_AA)
-cv2.putText(img_re,str(arr_color[5]),(415,490),cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,255,255), 3, cv2.LINE_AA)
-
+for num in range(0,6):
+    if arr_cir[num] == 0:
+        arr_cir_disp[num] = str("backward")
+    if arr_updn[num] == 0:
+        arr_updn_disp[num] = str("rotated")
+    
 for num in range(0,6):
     arr_cir[num] = str(arr_cir[num])
     arr_updn[num] = str(arr_updn[num])
@@ -112,14 +107,49 @@ cv2.putText(img_re,str('Reslult_R1 ' + ''.join(arr_cir)),(660,100),cv2.FONT_HERS
 cv2.putText(img_re,str('Reslult_R2 ' + ''.join(arr_updn)),(660,130),cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
 cv2.putText(img_re,str('Reslult_R3 ' + ''.join(arr_color)),(660,160),cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
 
+#color
+text_color = (255,255,255)
+cv2.putText(img_re,str(arr_color_eng[0]),(470,380),cv2.FONT_HERSHEY_SIMPLEX, 3, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color_eng[1]),(610,420),cv2.FONT_HERSHEY_SIMPLEX, 3, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color_eng[2]),(610,600),cv2.FONT_HERSHEY_SIMPLEX, 3, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color_eng[3]),(470,680),cv2.FONT_HERSHEY_SIMPLEX, 3, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color_eng[4]),(340,600),cv2.FONT_HERSHEY_SIMPLEX, 3, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color_eng[5]),(340,420),cv2.FONT_HERSHEY_SIMPLEX, 3, text_color, 3, cv2.LINE_AA)
+
+#color_num
+text_color = (0,255,255)
+cv2.putText(img_re,str(arr_color[0]),(485,460),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color[1]),(555,490),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color[2]),(555,560),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color[3]),(485,600),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color[4]),(415,560),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_color[5]),(415,490),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+
+#rotated
+text_color = (0,0,0)
+cv2.putText(img_re,str(arr_updn_disp[0]),(400,200),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_updn_disp[1]),(650,350),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_updn_disp[2]),(650,680),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_updn_disp[3]),(400,800),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_updn_disp[4]),(100,680),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_updn_disp[5]),(100,350),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+
+#backward
+text_color = (0,0,0)
+cv2.putText(img_re,str(arr_cir_disp[0]),(400,200),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_cir_disp[1]),(650,350),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_cir_disp[2]),(650,680),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_cir_disp[3]),(400,800),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_cir_disp[4]),(100,680),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
+cv2.putText(img_re,str(arr_cir_disp[5]),(100,350),cv2.FONT_HERSHEY_SIMPLEX, 1.5, text_color, 3, cv2.LINE_AA)
 
 
 # cv2.imshow('img1', img)
-cv2.imshow('img2', img_re)
 # cv2.imshow('img3', img_gray)
 # cv2.imshow('img4', img_gray_cir)
 # cv2.imshow('img5', img_edge)
 # cv2.imshow('img6', img_edge_cir)
 # cv2.imshow('imgb', img_B)
+cv2.imshow('img2', img_re)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
