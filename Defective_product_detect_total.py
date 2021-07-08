@@ -4,7 +4,8 @@ import os
 from math import *
 
 data_name = 'img_22.jpg'
-data_path = os.path.join(os.path.realpath(__file__),'dataset',data_name)
+dir_path = os.path.dirname(os.path.realpath(__file__))
+data_path = os.path.join(dir_path,"dataset", data_name)
 
 img = cv2.imread(data_path, cv2.IMREAD_COLOR)
 img_cp=img.copy()
