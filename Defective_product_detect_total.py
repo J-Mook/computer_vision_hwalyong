@@ -1,8 +1,12 @@
 import cv2
 import numpy as np
+import os
 from math import *
 
-img = cv2.imread("img_22.jpg", cv2.IMREAD_COLOR)
+data_name = 'img_22.jpg'
+data_path = os.path.join(os.path.realpath(__file__),'dataset',data_name)
+
+img = cv2.imread(data_path, cv2.IMREAD_COLOR)
 img_cp=img.copy()
 
 arr_cir=[0,0,0,0,0,0]
